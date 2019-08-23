@@ -16,10 +16,11 @@ limitations under the License.
 */
 
 
-// example code 
-// no error recovery
-// example and test
-// install after the test or instead the test
+//example code no error recovery
+//drive HCA using multiple threads on both side of the connection   
+//measurements are printed in RDMA.c - for simplicity and accuracy reasons 
+//install after the test or instead the test
+//some printouts left below for informational purposes
 
 #include <pthread.h>
 #include <CM.h>
