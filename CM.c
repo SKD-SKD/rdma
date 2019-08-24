@@ -256,26 +256,7 @@ static inline int create_ep (Connection *conn){
 		    printf ("\n error rdma_create_ep Client ret %u\n", ret);
 	}
 
-#if 0
-	if (!conn->is_server){
-		memset(&qp_attr, 0, sizeof qp_attr);
-		//printf ("  before ibv_query_qp  \n" );sleep(1);
-		if ((ret = ibv_query_qp(conn->id->qp, &qp_attr, IBV_QP_CAP, &init_attr))) {
-			printf("ibv_query_qp error\n");
-			exit(1);
-		}
-		printf (" QP info after rdma_create_ep > .......  %u max inline\n", qp_attr.cap.max_inline_data);
-		printf (" QP info after rdma_create_ep > .......  %u max recv_wr\n", qp_attr.cap.max_recv_wr);
-	}
-#endif
 
-#if 0     
-	memset(&init_attr, 0, sizeof init_attr);
-	memset(&qp_attr, 0, sizeof qp_attr);
-	if ((ret = ibv_query_qp(&conn->id->qp, &qp_attr, IBV_QP_CAP, &init_attr);//)) {
-	printf("ibv_query_qp error\n");
-	return;
-}
 if (qp_attr.cap.max_inline_data < MAX_INLINE_DATA)  printf(" err  ....rdma_server: device doesn't support MAX_INLINE_DATA \n ");
 printf (" info > .......  %u max inline", qp_attr.cap.max_inline_data);
 #endif
@@ -545,7 +526,7 @@ inline int create_connections(int client_node_id, uint32_t type) {
 
 	((ClientInfo *)conn->send_buf)->client_node_id = node_id;
 
-	//!!
+
 	// When it is not loop back send the rkey and address across
 	((ClientInfo *)conn->send_buf)->connEx.rkey = conn->dm_mr->rkey;
 	((ClientInfo *)conn->send_buf)->connEx.flags = type;
