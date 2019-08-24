@@ -132,9 +132,8 @@ static void ex_send_data(void *args){
 		//0 preregister mr with mr passed in
 		//pass in mr struct with both modes   
 		buf[0] = DATA___PING; x_send(ex_msg_destID, buf, TEST_DATA_SIZE, /*1*/0 ,  mr);
-		// send ACKs too 
+		// if need to send ACKs - better to do it in other thread  
 		//buf[0] = DATA_ASK___PONG; x_send(ex_msg_destID, buf, TEST_DATA_SIZE, /*1*/0 ,  mr);
-		//avarage time spent
 		//..da(ex_msg_destID, 1000000);
 	}	
 }
@@ -204,7 +203,7 @@ static int ex_id_r[MAX_CONN];
 
 static pthread_t ex_thread_s[MAX_CONN];
 static int ex_id_s[MAX_CONN];
-
+//modify #if as needed for the load 
 void  ex_create_threads() {
 
 	My_InitLock();
@@ -246,5 +245,5 @@ void  ex_create_threads() {
 		}
 #endif
 	}
-	printf("\nex_recive  *********threads started**********  \n");
+	printf("\n ex_recive ex_send *********threads started**********  \n");
 }
