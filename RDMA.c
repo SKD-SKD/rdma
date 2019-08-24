@@ -87,7 +87,7 @@ inline void  RDMA_PS_Lock(int ContID){};
 inline void  RDMA_PS_UnLock(int ContID){};
 inline void  RDMA_PS_InitLock(){};
 
-
+//modify #if as needed
 inline void  RDMA_WR_Lock(int ContID)   {
 #if 0 
 	Connection *Ep = get_connection( ContID );
