@@ -16,10 +16,6 @@ limitations under the License.
 */
 
 
-// this code i sinitial prototype to
-// accelerate the detail design and
-// enable initial code integration 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -302,7 +298,7 @@ inline int  RDMA_Send(int ContID, uint64_t destAddr, uint32_t rkey, void *buf_ad
 	//inline int  RDMA_Send(int ContID, uint64_t destAddr, uint32_t rkey, void *buf_addr, uint32_t buf_size) {
 #endif
 
-	//printf( "!!!!!!!!!  %u lkey -> %u\n", fmr , fmr->lkey );
+	//printf( "  %u lkey -> %u\n", fmr , fmr->lkey );
 
 	RDMA_Dt("WS start ----------  \0");
 
